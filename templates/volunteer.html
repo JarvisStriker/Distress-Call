@@ -1,0 +1,98 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        	<span class="sr-only">Toggle navigation</span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+      		</button>
+      		<a class="navbar-brand" href="#">Distress Call</a>
+  		</div>
+
+  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+					<ul class="nav navbar-nav">
+						<li><a href="#calamity/timeline">Timeline</a></li>
+						<li><a href="#calamity/donate">Donate Food/Shelter</a></li>
+						<li class="active"><a href="#calamity/volunteer">Volunteer to Help</a></li>
+						<li><a href="#calamity/contact">Emergency Contacts</a></li>
+			    </ul>
+					<ul class="nav navbar-nav navbar-right">
+            <li><p class="navbar-btn">
+              <a class="btn btn-default" data-toggle="modal" data-target="#volunteerModal">Become a Volunteer!</a>
+            </p></li>
+      		</ul>
+  		</div>
+	</div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6" ng-repeat="volunteer in volunteers">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>{{ volunteer.name }}</h4>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <small>from</small>
+              <p>{{ volunteer.place }}</p>
+            </div>
+
+            <div class="col-sm-6">
+              <small>wants to do</small>
+              <p>{{ volunteer.item }}</p>
+            </div>
+          </div>
+
+          <a href="tel:+919742507402" class="btn btn-success btn-block">CALL: {{ volunteer.number }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="volunteerModal" class="modal fade" role="dialog">
+  <form name="volunteerForm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Become a Volunteer!</h4>
+      </div>
+      <!-- Name, Item, From, ContactNumber -->
+      <div class="modal-body">
+      	<div class="row">
+      		<div class="col-md-2"></div>
+	      	<div class="col-md-8">
+	      		<div class="form-group">
+	      			<label class="control-label" for="volunteer_name">What's your name?</label>
+	      			<input type="name" class="form-control" id="volunteer_name" name="volunteer_name" ng-model="volunteer.name" placeholder="Name" required>
+	      		</div>
+	      		<hr>
+	      		<div class="form-group">
+	      			<label class="control-label" for="volunteer_address">Where do you live?</label>
+	      			<textarea style="height: 100px;" class="form-control" id="volunteer_address" ng-model="volunteer.place" name="volunteer_address" placeholder="Address"></textarea>
+	      			<span class="help-block">Please allow location sharing information to help us retrieve your exact address/location.</span>
+	      		</div>
+            <hr>
+            <div class="form-group">
+	      			<label class="control-label" for="volunteer_details">How would you like to help?</label>
+	      			<input type="name" class="form-control" id="volunteer_details" name="volunteer_details" ng-model="volunteer.item" placeholder="Description" required>
+	      		</div>
+            <hr>
+            <div class="form-group">
+	      			<label class="control-label" for="volunteer_contact">Can we contact you?</label>
+	      			<input type="tel" class="form-control" id="volunteer_contact" name="volunteer_contact" ng-model="volunteer.number" placeholder="Mobile Number" required>
+	      		</div>
+	      	</div>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="volunteerForm.$invalid" ng-click="volunteerRegistration();">Register as a Volunteer</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>

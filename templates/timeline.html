@@ -1,0 +1,63 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        	<span class="sr-only">Toggle navigation</span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+      		</button>
+      		<a class="navbar-brand" href="#">Distress Call</a>
+  		</div>
+
+  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#calamity/timeline">Timeline</a></li>
+				<li><a href="#calamity/donate">Donate Food/Shelter</a></li>
+				<li><a href="#calamity/volunteer">Volunteer to Help</a></li>
+				<li><a href="#calamity/contact">Emergency Contacts</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="">{{ rep_count }} incidents reported</a></li>
+			</ul>
+  		</div>
+	</div>
+</nav>
+
+<div class="container">
+  <div class="col-md-3" ng-repeat="report in reports | orderBy:'-'">
+    <div class="panel panel-default report-card">
+
+			<!-- TODO: Fix Image Display -->
+	  	<div class="panel-header" ng-show="{{ report.isImagePresent }}">
+				<img class="report-image" id="{{ report.$id }}" width="100%" height="200px">
+	  	</div>
+
+      <div class="panel-body">
+        <h4>{{ report.calamity }}</h4>
+
+        <small>description</small>
+        <p>{{ report.description }}</p>
+
+        <div class="row">
+          <div class="col-md-6">
+            <small>from</small>
+            <p>{{ report.lat }}, {{ report.lng }}</p>
+          </div>
+
+          <div class="col-md-6">
+            <small>timestamp</small>
+            <p>{{ report.time }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
+
+<style media="screen">
+	.report-image {
+		display: block;
+		object-fit: cover;
+	}
+</style>

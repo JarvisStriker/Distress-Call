@@ -1,0 +1,131 @@
+<div class="container">
+	<p>&nbsp;</p>
+	<img id="cclogo" class="img-responsive center-block clearfix" src="assets/cclogo.png" width="256px" data-toggle="modal" data-target="#reportModal">
+	<p>&nbsp;</p>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<input type="text" class="form-control" placeholder="Enter Location" ng-model="location" ng-keypress="">
+			<br>
+			<a id="submit" class="btn btn-danger btn-block" href="#calamity/{{ location }}">SEARCH</a>
+		</div>
+	</div>
+	<p>&nbsp;</p>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<a id="report" class="btn btn-primary btn-block" data-toggle="modal" data-target="#reportModal">Report Calamity</a>
+		</div>
+	</div>
+</div>
+
+<div class="footer navbar-fixed-bottom">
+	<p class="center-block text-center">
+		<big>Call <a href="tel:+919742507402">9742507402</a> to report <strong>offline</strong> now!</big>
+	</p>
+	<ul class="nav nav-pills" style="display: flex; justify-content: center;">
+		<li role="presentation"><a href="#" data-toggle="modal" data-target="#aboutModal"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+		<!--li role="presentation"><a href="http://calamitycontrol.com/app-release.apk" class="text-danger"><i class="fa fa-android" aria-hidden="true"></i> <strong>Download our Android App!</strong></a></li-->
+		<li role="presentation"><a href="mailto:kushal.st@hotmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Contact</a></li>
+	</ul>
+</div>
+
+<div id="aboutModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">About Distress Call</h4>
+				<hr>
+				<br>
+				<p><big>Distress Call is an all-in-one portal that is ready to work at any given moment, at any given time.</big></p>
+			</div>
+			<div class="modal-body">
+
+				<p>We are a group of 4 CS students who built this application as a part of the SJBIT 2018 Hackathon, and we built it for one simple reason. We wanted to save people, as much as our laptops allow us to do it.</p>
+				<p>The application and website, in unison, helps by allowing you to report a calamity in your area and also mention it's severity. This, bundled with the amazing power of crowd sourced contribution, we're able to showcase the safest and most dangerous areas at any given time.</p>
+				<p>For those of you even *without internet connections*, we provide a gateway for you to call our service and initiate a report almost immediately. This could prove to be useful to many stranded in various data-less situations. Our web platform is much more feature rich, and yet, streamlined to work efficiently and quickly in the time of need.</p>
+				<p>This is what you get when you use Distress Call:
+					<ul>
+						<li>Instant Reporting of Calamities, online or offline</li>
+						<li>Detailed Report Filing</li>
+						<li>Timeline of Reports, including photos, videos, and tweets being shared by thousands</li>
+						<li>Heat Map of all the endangered areas, across the world</li>
+						<li>Directory of donators willing to donate items for the cause</li>
+						<li>Directory of volunteers willing to spend their time for the cause</li>
+						<li>Emergency Contact Services, at a moment's touch</li>
+					</ul>
+				</p>
+				<p>We made this to help the world, so please support us by sharing when in case of a calamity. Let's put the technology we have in our palms to good use, and help people out there! :)</p>
+				<p>Thank you for using Distress Call.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="reportModal" class="modal fade" role="dialog">
+  <form name="reportForm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Report Calamity</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="row">
+      		<div class="col-md-2"></div>
+	      	<div class="col-md-8">
+				<div class="form-group">
+	      			<label class="control-label" for="report_type">Type of Calamity <small>(required)</small></label>
+	      			<select class="form-control" id="report_type" name="report_type" ng-model="report.type" required>
+								<option value="">Select Calamity</option>
+								<option>Cyclone</option>
+								<option>Earthquake</option>
+								<option>Tsunami</option>
+								<option>Hurricane</option>
+								<option>Tornado</option>
+								<option>Floods</option>
+								<option>Drought</option>
+								<option>Others</option>
+			        </select>
+	      		</div>
+	      		<div class="form-group">
+	      			<label class="control-label" for="report_condition">Condition of Calamity <small>(required)</small></label>
+	      			<select class="form-control" id="report_condition" name="report_condition" ng-model="report.condition" required>
+	      				<option value="">Select Level</option>
+								<option value="1">1 (I'm Safe!)</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 (I'm in Danger!)</option>
+			        </select>
+	      		</div>
+	      		<div class="form-group">
+	      			<label class="control-label" for="report_area">Area <small>(required)</small></label>
+	      			<input type="name" class="form-control" id="report_area" ng-model="report.area" name="report_area" placeholder="Area" required>
+	      		</div>
+				<div class="form-group">
+	      			<label class="control-label" for="report_city">City/Town <small>(required)</small></label>
+	      			<input type="name" class="form-control" id="report_city" ng-model="report.city" name="report_city" placeholder="City/Town"/>
+	      		</div>
+				<div class="form-group">
+	      			<label class="control-label" for="report_landmark">Landmark</label>
+	      			<input type="name" class="form-control" id="report_landmark" ng-model="report.landmark" name="report_landmark" placeholder="Landmark"/>
+	      		</div>
+				<div class="form-group">
+	      			<label class="control-label" for="report_phone">Phone Number</label>
+	      			<input type="number" pattern="[0-9]*" class="form-control" id="report_phone" ng-model="report.phone" name="report_phone" placeholder="Phone Number"/>
+					<span class="help-block">This information would be shared publicly, to help contact you in distress. <b>It's optional to share your contact information.<b></span>
+	      		</div>
+	      	</div>
+	      	<div class="col-md-2"></div>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="reportCalamity()" ng-disabled="reportForm.$invalid">Report</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>

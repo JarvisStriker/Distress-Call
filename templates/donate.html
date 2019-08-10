@@ -1,0 +1,98 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        	<span class="sr-only">Toggle navigation</span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+      		</button>
+      		<a class="navbar-brand" href="#">Distress Call</a>
+  		</div>
+
+  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+					<ul class="nav navbar-nav">
+						<li><a href="#calamity/timeline">Timeline</a></li>
+						<li class="active"><a href="#calamity/donate">Donate Food/Shelter</a></li>
+						<li><a href="#calamity/volunteer">Volunteer to Help</a></li>
+						<li><a href="#calamity/contact">Emergency Contacts</a></li>
+			    </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><p class="navbar-btn">
+              <a class="btn btn-default" data-toggle="modal" data-target="#donateModal">Donate something!</a>
+            </p></li>
+      		</ul>
+  		</div>
+	</div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6" ng-repeat="donor in donors">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>{{ donor.name }}</h4>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <small>from</small>
+              <p>{{ donor.place }}</p>
+            </div>
+
+            <div class="col-sm-6">
+              <small>wants to donate</small>
+              <p>{{ donor.item }}</p>
+            </div>
+          </div>
+
+          <a href="tel:+919742507402" class="btn btn-success btn-block">CALL: {{ donor.number }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="donateModal" class="modal fade" role="dialog">
+  <form name="donateForm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Donate Something</h4>
+      </div>
+      <!-- Name, Item, From, ContactNumber -->
+      <div class="modal-body">
+      	<div class="row">
+      		<div class="col-md-2"></div>
+	      	<div class="col-md-8">
+	      		<div class="form-group">
+	      			<label class="control-label" for="donor_name">What's your name?</label>
+	      			<input type="name" class="form-control" id="donor_name" name="donor_name" ng-model="donor.name" placeholder="Name" required>
+	      		</div>
+	      		<hr>
+	      		<div class="form-group">
+	      			<label class="control-label" for="donor_address">Where do you live?</label>
+	      			<textarea style="height: 100px;" class="form-control" id="donor_address" ng-model="donor.place" name="donor_address" placeholder="Address"></textarea>
+	      			<span class="help-block">Please allow location sharing information to help us retrieve your exact address/location.</span>
+	      		</div>
+            <hr>
+            <div class="form-group">
+	      			<label class="control-label" for="donor_item">What do you want to donate?</label>
+	      			<input type="name" class="form-control" id="donor_item" name="donor_item" ng-model="donor.item" placeholder="Item" required>
+	      		</div>
+            <hr>
+            <div class="form-group">
+	      			<label class="control-label" for="donor_contact">Can we contact you?</label>
+	      			<input type="tel" class="form-control" id="donor_contact" name="donor_contact" ng-model="donor.number" placeholder="Mobile Number" required>
+	      		</div>
+	      	</div>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="donateForm.$invalid" ng-click="donate();">Donate</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
